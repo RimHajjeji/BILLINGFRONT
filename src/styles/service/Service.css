@@ -1,0 +1,65 @@
+.input-search{
+    height: 50px;
+  }
+
+  .serachh{
+      padding-bottom: 50px;
+  }
+
+.add{
+    padding-bottom: 50px;
+    border-bottom: 1px solid black ; 
+
+  }
+.btnn{
+    margin-left: 87%;
+}
+  .accbt{
+    display:flex;
+    justify-content: space-around;
+  }
+   
+  .table-td {
+    border-radius: 10px;
+  }
+  /* .tettable {
+    border-radius: 12px;
+    background-color: red;
+  } */
+  .input_search {
+    width: 60vh;
+    border: 1px solid lightgray;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+  }
+  /* tr {
+  } */
+  th {
+    
+    text-align: center;
+    padding: 60px;
+    font-size: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-right: 12px;
+    border: 1px solid rgb(180, 180, 180);
+    border-collapse: collapse;
+  }
+  td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid rgb(187, 186, 186);
+  }
+  .thead-invoice tr th{
+  border: none;
+  }
+  .tbody-service tr td{
+    border:none;
+  }
+  .calender-table{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  

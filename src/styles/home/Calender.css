@@ -1,0 +1,144 @@
+.containerC {
+  background: linear-gradient(to right, rgb(129, 125, 129), rgb(77, 72, 74));
+  height: 79px;
+  width: 90rem;
+  border-radius: 10px;
+  margin-left: -60px;
+}
+
+.weekdays {
+  margin-top: 100px;
+  margin-left: 83px;
+}
+
+/* .test {
+  padding: 24px 16px;
+  scrollbar-highlight-color: teal;
+  margin: 2px;
+  font-size: 20px;
+  list-style: none;
+  transition: 0.5s all ease;
+  border-radius: 6px;
+  cursor: pointer;
+  float: left;
+} */
+/* li:hover {
+  background-color: rgb(255, 187, 187);
+} */
+
+/* li:active {
+  background-color: rgb(161, 170, 248);
+  transition: all ease;
+} */
+.selectH {
+  border-radius: 20px;
+  /*  height: 40px !important;
+  width:10px !important; */
+  padding: 0px;
+  width: 100px;
+  align-items: center !important;
+}
+.opt {
+  size: 40px !important ;
+  right: 100px !important;
+}
+.right {
+  padding: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 14px 20px;
+  background-color: rgb(77, 72, 74);
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+.right:hover {
+  background-color: rgb(255, 187, 187);
+}
+.right:active {
+  background-color: rgb(161, 170, 248);
+  transition: all ease;
+}
+
+.left {
+  padding: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 14px 20px;
+  background-color: rgb(129, 125, 129);
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  float: left;
+}
+.left:hover {
+  background-color: rgb(255, 187, 187);
+}
+.left:active {
+  background-color: rgb(147, 124, 209);
+  transition: all ease;
+}
+.table-td {
+  border-radius: 10px;
+}
+/* .tettable {
+  border-radius: 12px;
+  background-color: red;
+} */
+.input_search {
+  width: 60vh;
+  border: 1px solid lightgray;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+}
+/* tr {
+} */
+th {
+  text-align: center;
+  align-items: center;
+  padding: 60px;
+  font-size: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-right: 12px;
+  border: 1px solid rgb(180, 180, 180);
+  border-collapse: collapse;
+}
+td {
+  text-align: center;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid rgb(187, 186, 186);
+}
+.border * {
+  border: 1px solid black;
+}
+.border2 * {
+  border: 1px solid white;
+}
+.backcolor {
+  background-color: rgb(227, 225, 225);
+}
+.backcolor2 {
+  background-color: rgb(255, 255, 255);
+}
+.custom-border {
+  border-top: 2px solid black;
+  border-left: 1px solid rgba(27, 31, 35, 0.15);
+  border-bottom: 1px solid rgba(27, 31, 35, 0.15);
+  border-right: 1px solid rgba(27, 31, 35, 0.15);
+}
+.thead-invoice tr th {
+  border: none;
+}
+.tbody-invoice tr td {
+  border: none;
+}
+.calender-table {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

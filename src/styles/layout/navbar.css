@@ -1,0 +1,81 @@
+.profile-icone {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgb(217, 224, 224);
+  padding: 10px;
+  top: 0;
+  right: 0;
+  margin: 15px;
+}
+.SLayout {
+  display: flex;
+  background-color: #021740;
+  overflow: none;
+}
+.nav-bar-container {
+  height: 80px;
+  background-color: #021740;
+}
+.main-app-container {
+  padding: 60px;
+  background-color: #f1faee;
+  width: auto;
+  border-top-left-radius: 40.5px;
+  height: auto;
+  margin-top: -69px;
+  overflow: none;
+}
+
+.SMain {
+  /*  padding: 18px; */
+  margin-top: 150px;
+  width: 74.9%;
+  padding: 0;
+}
+
+.SMain h1 {
+  font-size: 400px;
+}
+
+.userss{
+ display: flex;
+  color: white;
+  align-items: center ;
+  justify-content: space-between !important;
+ 
+}
+
+.drop{
+  border-radius: 60% !important;
+  background-color: #021740;
+  border: none !important;
+  font-size: 20px;
+  margin-bottom: 40px;
+  
+}
+
+.drop:hover{
+  border-radius: 60% !important;
+  background-color: #4197EB;
+  border: none !important;
+  font-size: 22px;
+  color: #021740;
+}
+.it{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px !important;
+}
+.img{
+
+}
+@media only screen and (max-width: 1418px) {
+  .img{
+    /* image-rendering: url(../../assets/logo2.png); */
+    width: 150px;
+    margin-left: 0; 
+    margin-top:-5px;
+    margin-bottom:15px ;
+  }
+  }
+

@@ -1,0 +1,124 @@
+.Login {
+	/* background-image: url("../../assets/back.jpg");
+	width: 100%;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index:-12;
+	position: fixed;
+	padding: 0; */
+}
+.form-control {
+  height: 0px;
+  box-shadow: none;
+  color: #969fa4;
+}
+.form-control:focus {
+  border-color: #5cb85c;
+}
+.form-control,
+.btn {
+  border-radius: 3px;
+}
+
+.textC{
+  color: rgba(255, 255, 255, 0.681);
+}
+.textL{
+  color: rgb(255, 255, 255);
+}
+.signup-formR {
+  width: 450px;
+  margin: 23px 170px;
+  padding: 0px 0;
+  font-size: 17px;
+  z-index:1222;
+  
+}
+.signup-formR h2 {
+  color: #636363;
+  margin: 10px 0 15px;
+  position: relative;
+  text-align: center;
+ 
+}
+.signup-formR h2:before,
+.signup-formR h2:after {
+  content: "";
+  height: 1px;
+  width: 10%;
+  background: #d4d4d4;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+.signup-formR h2:before {
+  left: 0;
+}
+.signup-formR h2:after {
+  right: 0;
+}
+.signup-formR .hint-text {
+  color: #999;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.signup-formR form {
+  color: #999;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background: #ffffff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 30px;
+}
+.signup-formR .form-group {
+  margin-bottom: 40px;
+}
+.signup-formR input[type="checkbox"] {
+  margin-top: 7px;
+}
+.signup-formR .btn {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 140px;
+  outline: none !important;
+}
+.signup-formR .row div:first-child {
+  padding-right: 10px;
+}
+.signup-formR .row div:last-child {
+  padding-left: 10px;
+}
+/* .signup-form a {
+	color: #fff;
+	text-decoration: underline;
+} */
+.signup-formR a:hover {
+  text-decoration: none;
+}
+.signup-formR form a {
+  color: #0077bf;
+  text-decoration: none;
+}
+.signup-formR form a:hover {
+  text-decoration: underline;
+}
+
+.mar {
+ /*  margin-top: -50%; */
+  
+}
+.reg {
+position: absolute;
+  top:0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  display:flex;
+  align-items: center;
+}
+
+.tex{
+
+	margin-top: 10px;
+}
