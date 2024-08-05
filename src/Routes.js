@@ -40,6 +40,10 @@ const Routes = () => {
                         <Material />
                     </Route>
 
+                    <Route exact path="/devis">
+                        <Invoice />
+                    </Route>
+
                     <Route exact path="/facture">
                         <Invoice />
                     </Route>

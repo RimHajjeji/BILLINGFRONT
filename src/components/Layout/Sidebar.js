@@ -39,11 +39,18 @@ const Sidebar = () => {
             /* notification: 0, */
         },
         {
+            label: "Devis",
+            iconss: <FaFileInvoiceDollar />,
+            to: "/devis",
+            for: 1
+        },
+        {
             label: "Facture",
             iconss: <FaFileInvoiceDollar />,
             to: "/facture",
             for: 1
         },
+
         {
             label: "Client",
             iconss: <BsPeople />,

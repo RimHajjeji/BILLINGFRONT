@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import LoginUserReducer from './user/login/redurcer'
+import { AddDevisReducer, DelDevisReducer, DelDevisClienteReducer } from './devis/reducers'; 
 import RegistreUserReducer from './user/registre/user/reducer'
 import { EtatsInvoiceReducer, HomeReducer } from './home/redurcer'
 import RegistreCompanyReducer from './user/registre/company/reducer'
@@ -79,5 +80,14 @@ const rootReducer = combineReducers({
    del_Invoice: DelInvoiceReducer,
    del_Invoice_byclient: DelInvoicClienteReducer,
 
+   //devis
+   Add_Devis: AddDevisReducer,
+   del_Devis: DelDevisReducer,
+   del_Devis_byclient: DelDevisClienteReducer,
+
 })
 export default rootReducer;
+
+
+
+   
