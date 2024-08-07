@@ -84,11 +84,11 @@ function InvoicePdfTemplate({ clientObject, dateErp, totalTable, productObject, 
                                         <td>{el?.ref_intr}</td>
                                         <td>{el?.nom}</td>
                                         <td>{el?.amount}</td>
-                                        <td> {parseFloat(el?.prix).toFixed(3)} TND</td>
-                                        <td>{(parseFloat(el?.prix) * parseFloat(el?.amount)).toFixed(3)} TND</td>
+                                        <td> {parseFloat(el?.prix).toFixed(3)} CFA</td>
+                                        <td>{(parseFloat(el?.prix) * parseFloat(el?.amount)).toFixed(3)} CFA</td>
                                         <td>{Math.round(parseFloat(el?.tva) * 100)}%</td>
-                                        <td>{parseFloat(el?.mt_tva).toFixed(3)} TND</td>
-                                        <td>{parseFloat(el?.ttc).toFixed(3)} TND</td>
+                                        <td>{parseFloat(el?.mt_tva).toFixed(3)} CFA</td>
+                                        <td>{parseFloat(el?.ttc).toFixed(3)} CFA</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -101,23 +101,23 @@ function InvoicePdfTemplate({ clientObject, dateErp, totalTable, productObject, 
                                 <tbody className="border ">
                                     <tr  >
                                         <td style={{ borderRight: '1px solid  black' }}>Total HT</td>
-                                        <td >{parseFloat(totalTable?.totalHt).toFixed(3)} TND</td>
+                                        <td >{parseFloat(totalTable?.totalHt).toFixed(3)} CFA</td>
                                     </tr>
                                     <tr>
                                         <td style={{ borderRight: '1px solid black' }}>TOTAL TVA</td>
-                                        <td > {parseFloat((totalTable?.TotalTVA)).toFixed(3)} TND</td>
+                                        <td > {parseFloat((totalTable?.TotalTVA)).toFixed(3)} CFA</td>
                                     </tr>
                                     <tr>
                                         <td style={{ borderRight: '1px solid black' }}>TOTAL TTC</td>
-                                        <td >{parseFloat((totalTable?.TotalTTc)).toFixed(3)} TND</td>
+                                        <td >{parseFloat((totalTable?.TotalTTc)).toFixed(3)} CFA</td>
                                     </tr>
                                     <tr>
                                         <td style={{ borderRight: '1px solid black' }}>TIMBRE FISCAL</td>
-                                        <td >{parseFloat((totalTable?.Tmf)).toFixed(3)} TND</td>
+                                        <td >{parseFloat((totalTable?.Tmf)).toFixed(3)} CFA</td>
                                     </tr>
                                     <tr >
                                         <td style={{ borderRight: '1px solid black' }} ><strong style={{ border: 'none' }}>NET À PAYER</strong> </td>
-                                        <td ><strong style={{ border: 'none' }}>{parseFloat((totalTable?.net)).toFixed(3)} TND</strong></td>
+                                        <td ><strong style={{ border: 'none' }}>{parseFloat((totalTable?.net)).toFixed(3)} CFA</strong></td>
                                     </tr>
                                 </tbody>
                             </Table>

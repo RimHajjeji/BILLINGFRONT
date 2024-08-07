@@ -127,10 +127,10 @@ function Material() {
                 <td>{el?.categorie}</td>
                 <td>{el?.ref_intr}</td>
                 <td>{el?.amount} Pice</td>
-                <td>{el?.prix} TND</td>
+                <td>{el?.prix} CFA</td>
                 <td>{/* el?.tva === 0 ? "0" : */ Math.round(parseFloat(el?.tva) * 100)}%</td>
-                <td>{parseFloat(el?.mt_tva).toFixed(3)} TND</td>
-                <td>{parseFloat(el?.ttc).toFixed(3)} TND</td>
+                <td>{parseFloat(el?.mt_tva).toFixed(3)} CFA</td>
+                <td>{parseFloat(el?.ttc).toFixed(3)} CFA</td>
                 <td>
                   <div className='accbt'>
                     <Button onClick={() => {

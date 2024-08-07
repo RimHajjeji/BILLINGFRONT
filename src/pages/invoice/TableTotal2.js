@@ -8,23 +8,23 @@ function TableTotal2({ values, ...props }) {
                 <tbody className=" thead-invoice">
                     <tr  >
                         <td>Total HT</td>
-                        <td >{values?.totalHt} TND</td>
+                        <td >{values?.totalHt} CFA</td>
                     </tr>
                     <tr>
                         <td>TOTAL TVA</td>
-                        <td>{(values?.TotalTVA).toFixed(3)} TND</td>
+                        <td>{(values?.TotalTVA).toFixed(3)} CFA</td>
                     </tr>
                     <tr>
                         <td>TOTAL TTC</td>
-                        <td>{(values?.TotalTTc).toFixed(3)} TND</td>
+                        <td>{(values?.TotalTTc).toFixed(3)} CFA</td>
                     </tr>
                     <tr>
                         <td>TIMBRE FISCAL</td>
-                        <td>{(values?.Tmf).toFixed(3)} TND</td>
+                        <td>{(values?.Tmf).toFixed(3)} CFA</td>
                     </tr>
                     <tr>
                         <td><strong>NET À PAYER</strong> </td>
-                        <td><strong>{(values?.net).toFixed(3)} TND</strong></td>
+                        <td><strong>{(values?.net).toFixed(3)} CFA</strong></td>
                     </tr>
                 </tbody>
             </Table>

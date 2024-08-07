@@ -131,10 +131,10 @@ function Service() {
                 <td>{el?.categorie}</td>
                 <td>{el?.ref_intr}</td>
                 <td>{el?.amount}</td>
-                <td>{el?.prix} TND</td>
+                <td>{el?.prix} CFA</td>
                 <td>{Math.round(parseFloat(el?.tva) * 100)}%</td>
-                <td>{parseFloat(el?.mt_tva).toFixed(3)} DT</td>
-                <td>{parseFloat(el?.ttc).toFixed(3)} TND</td>
+                <td>{parseFloat(el?.mt_tva).toFixed(3)} CFA</td>
+                <td>{parseFloat(el?.ttc).toFixed(3)} CFA</td>
                 <td>
                   <div className='accbt'>
                     <Button onClick={() => {

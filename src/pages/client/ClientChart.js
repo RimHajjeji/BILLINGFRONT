@@ -145,21 +145,21 @@ function ClientChart({ ...props }) {
                         <div className="cdt cadre-total">
                             <h3>TOTAL</h3>
                             <h4>FAC: {MontClient?.etat?.total} </h4>
-                            <h4>MTHT: {MontClient?.sum?.montantHTT}  TND</h4>
+                            <h4>MTHT: {MontClient?.sum?.montantHTT}  CFA</h4>
                         </div>
                     </Col>
                     <Col>
                         <div className="cdt cadre-paye">
                             <h3>PAYE</h3>
                             <h4>FAC: {MontClient?.etat?.pay}</h4>
-                            <h4>MTHT:  {MontClient?.sum?.montontHTP} TND</h4>
+                            <h4>MTHT:  {MontClient?.sum?.montontHTP} CFA</h4>
                         </div>
                     </Col>
                     <Col>
                         <div className="cdt cadre-nonpaye">
                             <h3>NON PAYE </h3>
                             <h4>FAC: {MontClient?.etat?.notpay}</h4>
-                            <h4>MTHT: {MontClient?.sum?.montontHTNP}  TND</h4>
+                            <h4>MTHT: {MontClient?.sum?.montontHTNP}  CFA</h4>
                         </div>
                     </Col>
                 </Row>

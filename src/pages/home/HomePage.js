@@ -21,21 +21,21 @@ const Dashboard = () => {
                 <div className="cdt cadre-total">
                     <h3>TOTAL</h3>
                     <h4>FAC: {etat?.total}</h4>
-                    <h4>MTHT:  {sum?.montantHTT} TND</h4>
+                    <h4>MTHT:  {sum?.montantHTT} CFA</h4>
                 </div>
 
 
                 <div className="cdt cadre-paye">
                     <h3>PAYE</h3>
                     <h4>FAC: {etat?.pay}</h4>
-                    <h4>MTHT:  {sum?.montontHTP} TND</h4>
+                    <h4>MTHT:  {sum?.montontHTP} CFA</h4>
 
                 </div>
 
                 <div className="cdt cadre-nonpaye">
                     <h3>NON PAYE </h3>
                     <h4>FAC: {etat?.notpay}</h4>
-                    <h4>MTHT:  {sum?.montontHTNP} TND</h4>
+                    <h4>MTHT:  {sum?.montontHTNP} CFA</h4>
                 </div>
 
 

@@ -167,7 +167,7 @@ function Calender() {
                             <tr key={el?._id}>
                                 <td>{el?.nomrs}</td>
                                 <td>N°{el?.num}</td>
-                                <td>{el.emontantHT} TND</td>
+                                <td>{el.emontantHT} CFA</td>
                                 <td>{/* {el?.etats === true ? "payé" : "non payé"} */}
                                     {/*    <div class="col">
                                         <select class=" opt selectH form-select " aria-label="Default select example" value={etats} onChange={(e) => setEtats(e.target.value)}>
