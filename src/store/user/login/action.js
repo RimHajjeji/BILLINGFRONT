@@ -18,7 +18,7 @@ export const LoginUser = (data) => {
                 withCredentials: true, headers: {
                     origin: `${baseUrl}/`, 'Content-Type': 'application/json; charset=UTF-8',
                     "Access-Control-Allow-Credentials": true,
-                    "Access-Control-Allow-Origin": 'http://localhost:3002/'
+                    "Access-Control-Allow-Origin": '*'
                 }
             })
             .then((res) => {
