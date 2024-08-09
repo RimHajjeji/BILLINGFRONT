@@ -1,65 +1,70 @@
-import React, { useState, useEffect } from 'react'
-import { Container, Col, Row, Button, Table, FormControl } from "react-bootstrap"
-import { useDispatch, useSelector } from 'react-redux'
-import { Show_material_byCompany } from '../../store/material/action'
-import { Show_service_byCompany } from '../../store/service/action'
-import { FiEdit } from 'react-icons/fi'
-import { BiEdit } from 'react-icons/bi'
-import { MdOutlineSplitscreen, MdDeleteOutline, MdOutlineProductionQuantityLimits } from 'react-icons/md'
-import { RiCustomerService2Fill } from 'react-icons/ri'
-import ModalAddAmount from './ModalAddAmount'
-import CustomDropdown from './CustomDropdown'
-import ModalModifyPrice from './ModalModifyPrice'
-import MaterialRegister from '../material/MaterialRegister'
-import RegisterService from '../service/ServiceRegister'
+import React, { useState, useEffect } from 'react';
+import { Container, Col, Row, Button, Table, FormControl } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux';
 
-function ProductDevis({ settingTable, setServiceArray, setProductForPDF, setMaterialArray, setMaterialAmount, setServiceAmount, ...props }) {
-    const dispatch = useDispatch()
-    const companyId = useSelector(state => state?.Show_company_byUser?.data[0]?._id)
-    const materials = useSelector(state => state?.Show_material_byCompany?.data)
-    const services = useSelector(state => state?.Show_service_byCompany?.data)
-    const [addingProduct, setAddingProduct] = useState(0)
-    const [addingService, setAddingService] = useState(0)
-    const [quotationItems, setQuotationItems] = useState([])
-    const [selectedMaterial, setSelectedMaterial] = useState({})
-    const [selectedMaterialForPrice, setSelectedMaterialForPrice] = useState({})
-    const [count, setCount] = useState(0)
-    const [preSelected, setPreSelected] = useState(false)
-    const [showModal, setShowModal] = useState(false)
-    const [materialType, setMaterialType] = useState('')
-    const [showModalPrice, setShowModalPrice] = useState(false)
-    const [showAddService, setShowAddService] = useState(false)
-    const [showAddMaterial, setShowAddMaterial] = useState(false)
-    const [modalShow, setModalShow] = useState(false)
-    const [type, setType] = useState('')
+import { Show_material_byCompany } from '../../store/material/action';
+import { Show_service_byCompany } from '../../store/service/action';
+import { FiEdit } from 'react-icons/fi';
+import { BiEdit } from 'react-icons/bi';
+import { MdOutlineSplitscreen } from 'react-icons/md';
+import { MdDeleteOutline } from 'react-icons/md';
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import ModalAddAmout from './ModalAddAmout';
+import CustomDropdown from './CustomDropdown';
+import ModalModifyPrice from './ModalModifyPrice';
 
-    useEffect(() => {
-        dispatch(Show_material_byCompany(companyId))
-        dispatch(Show_service_byCompany(companyId))
-    }, [companyId, count])
+import { RiCustomerService2Fill } from 'react-icons/ri';
+import MaterialRegistre from '../material/MaterialRegistre';
+import RegisterService from '../service/ServiceRegistre';
 
-    useEffect(() => {
-        setAddingProduct(0)
-        setAddingService(0)
-    }, [quotationItems, count])
+function ProductDevis({ settingTable, setServiceArray, setProductforPDF, setMaterielArray, setMatetielAmount, setServiceAmount, ...props }) {
+    const dispatch = useDispatch();
+    const companyId = useSelector(state => state?.Show_company_byUser?.data[0]?._id);
+    const materiels = useSelector(state => state?.Show_material_byCompany?.data);
+    const services = useSelector(state => state?.Show_service_byCompany?.data);
+    const [addingProduct, setAddingProduct] = useState(0);
+    const [addingService, setAddingService] = useState(0);
+    const [devisItems, setDevisItems] = useState([]);
+    const [selectedMateriel, setSelectedMaterie] = useState({});
+    const [selectedMaterielForPrice, setSelectedMaterielForPrice] = useState({});
+    const [count, setCount] = useState(0);
+    const [PreSelected, setPreSelected] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [typeMateriel, setMaterielType] = useState('');
+    const [showModalPrice, setShowModalPrice] = useState(false);
+    const [showaddservice, setShowaddservice] = useState(false);
+    const [showaddmaterial, setShowaddmaterial] = useState(false);
+    const [modalShow, setModalShow] = useState(false);
+    const [type, setType] = useState('');
 
     useEffect(() => {
-        if (quotationItems?.length > 0) {
-            let ttht = 0
-            let ttva = 0
-            let tttc = 0
-            quotationItems?.map((el) => {
-                ttht = el?.amount !== undefined ? ((parseInt(el?.price) * parseInt(el?.amount))) + ttht : (parseInt(el?.price)) + ttht
-                ttva = parseFloat(el?.mt_tva) + ttva
-                tttc = parseFloat(ttht) + ttva
-            })
+        dispatch(Show_material_byCompany(companyId));
+        dispatch(Show_service_byCompany(companyId));
+    }, [companyId, count]);
+
+    useEffect(() => {
+        setAddingProduct(0);
+        setAddingService(0);
+    }, [devisItems, count]);
+
+    useEffect(() => {
+        if (devisItems.length > 0) {
+            let totalHt = 0;
+            let totalTva = 0;
+            let totalTtc = 0;
+            devisItems.forEach(item => {
+                const itemTotalHt = item.amount ? (parseInt(item.prix) * parseInt(item.amount)) : parseInt(item.prix);
+                totalHt += itemTotalHt;
+                totalTva += parseFloat(item.mt_tva);
+                totalTtc += itemTotalHt + parseFloat(item.mt_tva);
+            });
             settingTable({
-                totalHt: ttht,
-                TotalTVA: ttva,
-                TotalTTc: tttc,
+                totalHt,
+                TotalTVA: totalTva,
+                TotalTTc: totalTtc,
                 Tmf: 0.600,
-                net: tttc + 0.600,
-            })
+                net: totalTtc + 0.600,
+            });
         } else {
             settingTable({
                 totalHt: 0.000,
@@ -67,86 +72,86 @@ function ProductDevis({ settingTable, setServiceArray, setProductForPDF, setMate
                 TotalTTc: 0.000,
                 Tmf: 0.600,
                 net: 0.600,
-            })
+            });
         }
-    }, [quotationItems])
+    }, [devisItems]);
 
     useEffect(() => {
-        if (selectedMaterial?._id !== undefined) {
-            setShowModal(true)
-            setPreSelected(false)
+        if (selectedMateriel._id) {
+            setShowModal(true);
+            setPreSelected(false);
         }
-    }, [selectedMaterial])
+    }, [selectedMateriel]);
 
-    const closeModalAmount = (id) => {
-        if (!preSelected) { 
-            setQuotationItems(quotationItems.filter(el => el?._id !== id))
+    const CloseModalAmount = (id) => {
+        if (!PreSelected) {
+            setDevisItems(devisItems.filter(el => el._id !== id));
         }
-        setShowModal(false)
-    }
+        setShowModal(false);
+    };
 
-    const closeModalPrice = () => {
-        setShowModalPrice(false)
-    }
+    const CloseModalPrice = () => {
+        setShowModalPrice(false);
+    };
 
     const handleChange = (id, val) => {
-        var arr = quotationItems.filter((el) => el?._id === id)[0]
-        arr['amount'] = val
-        setQuotationItems(prev => [...prev.filter(el => el?._id !== id), arr])
-        setShowModal(false)
-        setCount(prev => prev + 1)
-        setSelectedMaterial({})
-        handleChangePrice(id, arr['price'])
-    }
+        const updatedItem = devisItems.find(el => el._id === id);
+        updatedItem.amount = val;
+        setDevisItems(prev => [...prev.filter(el => el._id !== id), updatedItem]);
+        setShowModal(false);
+        setCount(prev => prev + 1);
+        setSelectedMaterie({});
+        handleChangePrice(id, updatedItem.prix);
+    };
 
-    const addProduct = () => {
+    const addProductOrService = () => {
         if (addingProduct > 0 && addingService === 0) {
-            setShowAddMaterial(true)
+            setShowaddmaterial(true);
         } else {
-            setShowAddService(true)
+            setShowaddservice(true);
         }
-    }
+    };
 
     useEffect(() => {
-        if (quotationItems.length > 0)
-            setProductForPDF(quotationItems)
-    }, [quotationItems])
+        if (devisItems.length > 0)
+            setProductforPDF(devisItems);
+    }, [devisItems]);
 
     const handleChangePrice = (id, val) => {
-        var arr = quotationItems.filter((el) => el?._id === id)[0]
-        arr['price'] = val
-        arr['mt_tva'] = ((parseInt(val) * parseInt(arr['amount'])) * parseFloat(arr['tva']))
-        arr['ttc'] = (parseInt(val) * parseInt(arr['amount'])) + parseFloat(arr['mt_tva'])
-        setQuotationItems(prev => [...prev.filter(el => el?._id !== id), arr])
-        setShowModalPrice(false)
-        setSelectedMaterial({})
-    }
+        const updatedItem = devisItems.find(el => el._id === id);
+        updatedItem.prix = val;
+        updatedItem.mt_tva = (parseInt(val) * parseInt(updatedItem.amount)) * parseFloat(updatedItem.tva);
+        updatedItem.ttc = (parseInt(val) * parseInt(updatedItem.amount)) + parseFloat(updatedItem.mt_tva);
+        setDevisItems(prev => [...prev.filter(el => el._id !== id), updatedItem]);
+        setShowModalPrice(false);
+        setSelectedMaterie({});
+    };
 
     return (
         <Container>
             <Row>
                 <Col sm={{ span: 1, offset: '10' }}>
                     <Button onClick={() => {
-                        setAddingProduct(prev => prev + 1)
-                        setAddingService(0)
+                        setAddingProduct(prev => prev + 1);
+                        setAddingService(0);
                     }} variant='outline-primary'><MdOutlineProductionQuantityLimits />+</Button>
                 </Col>
                 <Col sm={{ span: 1 }}>
                     <Button onClick={() => {
-                        setAddingService(prev => prev + 1)
-                        setAddingProduct(0)
+                        setAddingService(prev => prev + 1);
+                        setAddingProduct(0);
                     }} variant='outline-primary'><RiCustomerService2Fill />+</Button>
                 </Col>
             </Row>
             <Row>
-                <Table striped borderless="true" hover responsive size="lg" className="calender-table">
-                    <thead className="thead-invoice">
+                <Table striped borderless hover responsive size="lg" className="calender-table">
+                    <thead className="thead-devis">
                         <tr>
                             <th></th>
                             <th>Désignation</th>
                             <th>Quantité</th>
                             <th>PU HT</th>
-                            <th>Mt</th>
+                            <th>Montant</th>
                             <th>TVA</th>
                             <th>MT TVA</th>
                             <th>MT TTC</th>
@@ -155,99 +160,87 @@ function ProductDevis({ settingTable, setServiceArray, setProductForPDF, setMate
                         <tr>
                             {addingProduct > 0 ? (
                                 <CustomDropdown
-                                    data={materials}
+                                    data={materiels}
                                     name={"Matériel"}
-                                    setFacture={setQuotationItems}
-                                    Facture={quotationItems}
-                                    addP={addProduct}
+                                    setFacture={setDevisItems}
+                                    Facture={devisItems}
+                                    addP={addProductOrService}
                                     count={setCount}
-                                    selectedMaterial={setSelectedMaterial}
-                                    MaterialSelected={setMaterialArray}
-                                    setMaterialType={setMaterialType}
+                                    selectedMateriel={setSelectedMaterie}
+                                    MaterielSelected={setMaterielArray}
+                                    setMaterielType={setMaterielType}
                                 />
                             ) : addingService > 0 ? (
                                 <CustomDropdown
                                     data={services}
-                                    setFacture={setQuotationItems}
+                                    setFacture={setDevisItems}
                                     name={"Service"}
-                                    addP={addProduct}
-                                    Facture={quotationItems}
+                                    addP={addProductOrService}
+                                    Facture={devisItems}
                                     count={setCount}
                                     ServiceSelected={setServiceArray}
-                                    selectedMaterial={setSelectedMaterial}
-                                    MaterialSelected={setMaterialArray}
-                                    setMaterialType={setMaterialType}
+                                    selectedMateriel={setSelectedMaterie}
+                                    MaterielSelected={setMaterielArray}
+                                    setMaterielType={setMaterielType}
                                 />
                             ) : null}
                         </tr>
                     </thead>
-                    <tbody className="tbody-invoice">
-                        {quotationItems?.length > 0 && quotationItems.map(el => (
-                            <tr key={el?._id}>
+                    <tbody className="tbody-devis">
+                        {devisItems.length > 0 && devisItems.map(el => (
+                            <tr key={el._id}>
                                 <td></td>
-                                <td>{el?.nom}</td>
+                                <td>{el.nom}</td>
                                 <td style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                                     <FormControl
                                         type="number"
                                         disabled
                                         style={{ height: '30px', width: '100px', alignSelf: 'center' }}
-                                        value={el?.amount ? el?.amount : "-"}
+                                        value={el.amount ? el.amount : "-"}
                                     />
                                     <BiEdit size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
-                                        setShowModal(true)
-                                        if (services?.map(el2 => el2?._id).includes(el?._id)) {
-                                            setSelectedMaterial(services?.filter(el2 => el2?._id === el?._id)[0], () => {
-                                                setPreSelected(true)
-                                            })
-                                        } else {
-                                            setSelectedMaterial(materials?.filter(el2 => el2?._id === el?._id)[0], () => {
-                                                setPreSelected(true)
-                                            })
-                                        }
+                                        setShowModal(true);
+                                        const selectedItem = services.find(el2 => el2._id === el._id) || materiels.find(el2 => el2._id === el._id);
+                                        setSelectedMaterie(selectedItem);
+                                        setPreSelected(true);
                                     }} />
                                 </td>
-                                <td>{el?.price} <BiEdit size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
-                                    setSelectedMaterialForPrice(el)
-                                    setShowModalPrice(true)
+                                <td>{el.prix} <BiEdit size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
+                                    setSelectedMaterielForPrice(el);
+                                    setShowModalPrice(true);
                                 }} /></td>
-                                <td>{el?.amount * el?.price}</td>
-                                <td>{Math.round(parseFloat(el?.tva) * 100)}%</td>
-                                <td>{parseFloat(el?.mt_tva).toFixed(3)}</td>
-                                <td>{el?.ttc}</td>
-                                <td style={{ cursor: 'pointer' }} onClick={() => {
-                                    setQuotationItems(quotationItems?.filter((el2) => el2?._id !== el?._id))
-                                }}><MdDeleteOutline size={25} /></td>
+                                <td>{el.amount * el.prix}</td>
+                                <td>{Math.round(parseFloat(el.tva) * 100)}%</td>
+                                <td> {parseFloat(el.mt_tva).toFixed(3)}</td>
+                                <td>{el.ttc.toFixed(3)}</td>
+                                <td><MdDeleteOutline size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
+                                    setDevisItems(devisItems.filter(el2 => el2._id !== el._id));
+                                    setCount(prev => prev + 1);
+                                }} /></td>
                             </tr>
                         ))}
                     </tbody>
                 </Table>
             </Row>
-            <ModalAddAmount
-                show={showModal}
-                selectedMaterial={selectedMaterial}
-                changeAmount={handleChange}
-                onHide={closeModalAmount}
-                PreSelected={preSelected}
-                type={materialType}
-                setServiceAmount={setServiceAmount}
-                setMaterialAmount={setMaterialAmount}
-            />
-            <ModalModifyPrice
-                show={showModalPrice}
-                selectedMaterial={selectedMaterialForPrice}
-                changePrice={handleChangePrice}
-                onHide={closeModalPrice}
-            />
-            <MaterialRegister
-                show={showAddMaterial}
-                onHide={() => setShowAddMaterial(false)}
-            />
-            <RegisterService
-                show={showAddService}
-                onHide={() => setShowAddService(false)}
-            />
+            <Row>
+                <ModalAddAmout
+                    show={showModal}
+                    close={() => CloseModalAmount(selectedMateriel._id)}
+                    selectedMateriel={selectedMateriel}
+                    changeAmount={handleChange}
+                    type={typeMateriel}
+                />
+                <ModalModifyPrice
+                    show={showModalPrice}
+                    close={CloseModalPrice}
+                    selectedMateriel={selectedMaterielForPrice}
+                    changeAmount={handleChangePrice}
+                />
+                <MaterialRegistre show={showaddmaterial} setShow={setShowaddmaterial} />
+                <RegisterService show={showaddservice} setShow={setShowaddservice} />
+            </Row>
         </Container>
-    )
+    );
 }
 
-export default ProductDevis
+export default ProductDevis;

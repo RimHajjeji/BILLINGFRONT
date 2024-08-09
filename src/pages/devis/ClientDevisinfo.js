@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { BiHide } from 'react-icons/bi';
 import { MdDeleteOutline } from 'react-icons/md';
 
-function ClientDevisInfo({ dataFilter, ClientObjectExport, ...props }) {
+function ClientDevisinfo({ dataFilter, ClientObjectExport, ...props }) {
     const [addingInput, setAddingInput] = useState([]);
     const [delteElement, setDeletedElement] = useState([]);
     const [idInput, setIdInput] = useState(null);
@@ -61,4 +61,4 @@ function ClientDevisInfo({ dataFilter, ClientObjectExport, ...props }) {
     );
 }
 
-export default ClientDevisInfo;
+export default ClientDevisinfo;

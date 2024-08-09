@@ -5,7 +5,7 @@ import ClientRegistre from '../client/ClientRegistre';
 import { FiUsers } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Show_client_byCompany } from '../../store/client/action';
-import ClientDevisInfo from './ClientDevisInfo';
+import ClientDevisInfo from './ClientDevisinfo';
 
 function AddClientDevis({ setClientObject, setObjectForExport, ...props }) {
     const ref = useRef();

@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Modal, Container, Col, Row, FormControl, Alert } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react';
+import { Button, Modal, Container, Col, Row, FormControl, Alert } from 'react-bootstrap';
+
 function ModalModifyPrice({ selectedMateriel, changePrice, ...props }) {
-
-    const [priceValue, setPriceValue] = useState(0)
-    const [MaterielAmounts, setMaterielAmount] = useState(selectedMateriel?.amount)
-    const [showAlertAmount, setShowAlertAmount] = useState(false)
-    useEffect(() => {
-        if (selectedMateriel?._id !== undefined)
-            setPriceValue(selectedMateriel?.prix)
-    }, [selectedMateriel])
+    const [priceValue, setPriceValue] = useState(0);
+    const [showAlertAmount, setShowAlertAmount] = useState(false);
 
     useEffect(() => {
-        if (showAlertAmount === true) {
-            setTimeout(() => {
-                setShowAlertAmount(false)
-            }, 2000)
+        if (selectedMateriel?._id !== undefined) {
+            setPriceValue(selectedMateriel?.prix);
         }
-    }, [showAlertAmount])
-    console.log('selected materie', selectedMateriel)
+    }, [selectedMateriel]);
+
+    useEffect(() => {
+        if (showAlertAmount) {
+            const timer = setTimeout(() => setShowAlertAmount(false), 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [showAlertAmount]);
+
     return (
         <Modal
             {...props}
@@ -27,55 +27,50 @@ function ModalModifyPrice({ selectedMateriel, changePrice, ...props }) {
             onHide={props?.onHide}
             backdrop="static"
         >
-            <Modal.Header >
+            <Modal.Header>
                 <Modal.Title>Modifier prix</Modal.Title>
             </Modal.Header>
-            <Modal.Body >
-                <Container style={{ width: "fit-content" }} >
-                    <Row >
+            <Modal.Body>
+                <Container style={{ width: "fit-content" }}>
+                    <Row>
                         <Col sm={6}>
                             <FormControl
                                 style={{ height: '40px' }}
-                                type="Number"
+                                type="number"
                                 value={priceValue}
-                                onChange={(e) => {
-
-                                    setPriceValue(e.target.value)
-
-
-
-
-
-                                }}
+                                onChange={(e) => setPriceValue(e.target.value)}
                             />
                         </Col>
-
                     </Row>
                     <Row style={{ margin: '10px' }}>
                         <Col sm="12">
-                            {showAlertAmount &&
-                                (<Alert variant="danger" >
+                            {showAlertAmount && (
+                                <Alert variant="danger">
                                     <Alert.Heading>Attention!</Alert.Heading>
-                                    <p>
-                                        Le prix est invalide
-                                    </p>
-                                </Alert>)}
+                                    <p>Le prix est invalide</p>
+                                </Alert>
+                            )}
                         </Col>
-
                     </Row>
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='outline-success' onClick={() => {
-                    if (priceValue > 0)
-                        changePrice(selectedMateriel?._id, priceValue)
-                    else
-                        setShowAlertAmount(true)
-                }
-                }>Valider</Button>
+                <Button
+                    variant='outline-success'
+                    onClick={() => {
+                        if (priceValue > 0) {
+                            changePrice(selectedMateriel?._id, priceValue);
+                        } else {
+                            setShowAlertAmount(true);
+                        }
+                    }}
+                >
+                    Valider
+                </Button>
                 <Button variant='outline-danger' onClick={() => props?.onHide()}>Close</Button>
             </Modal.Footer>
-        </Modal >
-    )
+        </Modal>
+    );
 }
-export default ModalModifyPrice
+
+export default ModalModifyPrice;

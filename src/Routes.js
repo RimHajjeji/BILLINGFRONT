@@ -7,7 +7,8 @@ import Facture_client from "./pages/client/Facture_client";
 import HomePage from "./pages/home/HomePage";
 import Material from "./pages/material/Material";
 import Service from "./pages/service/Service";
-import Invoice from "./pages/invoice/Invoice"
+import Invoice from "./pages/invoice/Invoice";
+import Devis from "./pages/devis/Devis";
 import UpdateUser from "./pages/company/UpdateCompany";
 import InvoicePdfTemplate from './pages/invoice/InvoicePdfTemplate'
 import Homeadmin from "./pages/admin/Homeadmin";
@@ -41,7 +42,7 @@ const Routes = () => {
                     </Route>
 
                     <Route exact path="/devis">
-                        <Invoice />
+                        <Devis/>
                     </Route>
 
                     <Route exact path="/facture">

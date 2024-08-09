@@ -23,6 +23,10 @@ import {
     SHOW_CLIENT_ETATS_UPDATE_REQUEST,
     SHOW_CLIENT_ETATS_UPDATE_SUCESS,
 
+    SHOW_DEVIS_BY_CLIENT_REQUEST,
+    SHOW_DEVIS_BY_CLIENT_SUCCESS,
+    SHOW_DEVIS_BY_CLIENT_FAIL,
+
 } from './constant'
 import axios from 'axios'
 import { baseUrl } from '../../config/base'
@@ -159,3 +163,24 @@ export const Show_invoice_byClient = (data) => {
             })
     }
 }
+
+
+export const Show_devis_byClient = (data) => {
+    return async (dispatch) => {
+        dispatch({ type: SHOW_DEVIS_BY_CLIENT_REQUEST });
+        try {
+            const response = await axios.get(`${baseUrl}/devis/show/client/${data}`);
+            dispatch({
+                type: SHOW_DEVIS_BY_CLIENT_SUCCESS,
+                payload: response.data,
+            });
+        } catch (error) {
+            dispatch({
+                type: SHOW_DEVIS_BY_CLIENT_FAIL,
+                payload: error,
+            });
+        }
+    };
+};
+
+

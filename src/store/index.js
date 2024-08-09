@@ -31,6 +31,7 @@ import CheckEmailReducer from './user/registre/check_email/reducer';
 
 
 
+
 const rootReducer = combineReducers({
    LoginUser: LoginUserReducer,
    RegisterUser: RegistreUserReducer,
