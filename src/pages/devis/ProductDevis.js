@@ -187,39 +187,46 @@ function ProductDevis({ settingTable, setServiceArray, setProductforPDF, setMate
                         </tr>
                     </thead>
                     <tbody className="tbody-devis">
-                        {devisItems.length > 0 && devisItems.map(el => (
-                            <tr key={el._id}>
-                                <td></td>
-                                <td>{el.nom}</td>
-                                <td style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                    <FormControl
-                                        type="number"
-                                        disabled
-                                        style={{ height: '30px', width: '100px', alignSelf: 'center' }}
-                                        value={el.amount ? el.amount : "-"}
-                                    />
-                                    <BiEdit size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
-                                        setShowModal(true);
-                                        const selectedItem = services.find(el2 => el2._id === el._id) || materiels.find(el2 => el2._id === el._id);
-                                        setSelectedMaterie(selectedItem);
-                                        setPreSelected(true);
-                                    }} />
-                                </td>
-                                <td>{el.prix} <BiEdit size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
-                                    setSelectedMaterielForPrice(el);
-                                    setShowModalPrice(true);
-                                }} /></td>
-                                <td>{el.amount * el.prix}</td>
-                                <td>{Math.round(parseFloat(el.tva) * 100)}%</td>
-                                <td> {parseFloat(el.mt_tva).toFixed(3)}</td>
-                                <td>{el.ttc.toFixed(3)}</td>
-                                <td><MdDeleteOutline size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
-                                    setDevisItems(devisItems.filter(el2 => el2._id !== el._id));
-                                    setCount(prev => prev + 1);
-                                }} /></td>
-                            </tr>
-                        ))}
-                    </tbody>
+    {devisItems.length > 0 && devisItems.map(el => (
+        <tr key={el._id}>
+            <td></td>
+            <td>{el.nom}</td>
+            <td style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                <FormControl
+                    type="number"
+                    disabled
+                    style={{ height: '30px', width: '100px', alignSelf: 'center' }}
+                    value={el.amount ? el.amount : "-"}
+                />
+                <BiEdit size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
+                    setShowModal(true);
+                    const selectedItem = services.find(el2 => el2._id === el._id) || materiels.find(el2 => el2._id === el._id);
+                    setSelectedMaterie(selectedItem);
+                    setPreSelected(true);
+                }} />
+            </td>
+            <td>{el.prix} <BiEdit size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
+                setSelectedMaterielForPrice(el);
+                setShowModalPrice(true);
+            }} /></td>
+            <td>{el.amount * el.prix}</td>
+            <td>{Math.round(parseFloat(el.tva) * 100)}%</td>
+            <td>{parseFloat(el.mt_tva).toFixed(3)}</td>
+            <td>
+                {
+                    typeof el.ttc === 'number' 
+                        ? el.ttc.toFixed(3) 
+                        : parseFloat(el.ttc || 0).toFixed(3)
+                }
+            </td>
+            <td><MdDeleteOutline size={'20'} style={{ cursor: 'pointer' }} onClick={() => {
+                setDevisItems(devisItems.filter(el2 => el2._id !== el._id));
+                setCount(prev => prev + 1);
+            }} /></td>
+        </tr>
+    ))}
+</tbody>
+
                 </Table>
             </Row>
             <Row>

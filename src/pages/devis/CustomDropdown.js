@@ -34,7 +34,7 @@ function CustomDropdown({ data, name, hande, addP, setFacture, Facture, count, s
             setFiltredData(data)
         }
     }, [data, item])
-    console.log('data is the', data)
+//    console.log('data is the', data)
     return (
         <Container style={{ marginTop: '20px' }}>
             <Col style={{ display: 'flex' }}>
@@ -54,28 +54,28 @@ function CustomDropdown({ data, name, hande, addP, setFacture, Facture, count, s
                         <strong>{name}</strong>
                     </Toast.Header>
                     <Toast.Body style={{ cursor: 'pointer' }}>
-                        {FiltredData?.length > 0 && FiltredData?.map(el => (
-                            <>
-                                <p onClick={() => {
-                                    setShowToast(false)
-                                    /*   setSelectedData(el) */
-                                    if (Facture.map(elm => elm?._id)?.includes(el?._id) === false) {
-                                        setFacture(prev => { return [...prev, el] })
-                                        count(prev => prev + 1)
-                                        selectedMateriel && selectedMateriel(
-                                            FiltredData.filter(el2 => el2?._id === el?._id)[0]
-                                        )
-                                        if (name === 'Service')
-                                            ServiceSelected(prev => [...prev, el?._id])
-                                        else
-                                            MaterielSelected(prev => [...prev, el?._id])
-                                    }
-                                }} key={el?._id}>{el?.nom}/{el?.ref_intr}</p>
-                                <hr />
-                            </>
+    {FiltredData?.length > 0 && FiltredData?.map((el, index) => (
+        <React.Fragment key={el?._id}>
+            <p onClick={() => {
+                setShowToast(false);
+                if (Facture.map(elm => elm?._id)?.includes(el?._id) === false) {
+                    setFacture(prev => [...prev, el]);
+                    count(prev => prev + 1);
+                    selectedMateriel && selectedMateriel(
+                        FiltredData.filter(el2 => el2?._id === el?._id)[0]
+                    );
+                    if (name === 'Service') {
+                        ServiceSelected(prev => [...prev, el?._id]);
+                    } else {
+                        MaterielSelected(prev => [...prev, el?._id]);
+                    }
+                }
+            }}>{el?.nom}/{el?.ref_intr}</p>
+            <hr />
+        </React.Fragment>
+    ))}
+</Toast.Body>
 
-                        ))}
-                    </Toast.Body>
                 </Toast>
             </ToastContainer>
         </Container>

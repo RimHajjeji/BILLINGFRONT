@@ -21,7 +21,7 @@ function ModalAddAmout({ selectedMateriel, PreSelected, setServiceAmount, setMat
             }, 2000)
         }
     }, [showAlertAmount])
-    console.log('selected mater', PreSelected)
+    //console.log('selected mater', PreSelected)
     return (
         <Modal
             {...props}
