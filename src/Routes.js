@@ -5,6 +5,7 @@ import Login from "./pages/Auth/Login";
 import Client from "./pages/client/Client";
 import Facture_client from "./pages/client/Facture_client";
 import HomePage from "./pages/home/HomePage";
+import HomePageD from "./pages/imprimedevis/HomePageD";
 import Material from "./pages/material/Material";
 import Service from "./pages/service/Service";
 import Invoice from "./pages/invoice/Invoice";
@@ -23,6 +24,9 @@ const Routes = () => {
 
                     <Route exact path="/">
                         <HomePage />
+                    </Route>
+                    <Route exact path="/imprimer-devis">
+                        <HomePageD />
                     </Route>
 
                     <Route exact path="/client" >

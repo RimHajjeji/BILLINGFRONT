@@ -38,6 +38,28 @@ const Sidebar = () => {
             for: 1
             /* notification: 0, */
         },
+
+
+
+
+
+        {
+            label: "Imprimer Devis",
+            iconss: <AiOutlineHome />,
+            to: "/imprimer-devis",
+            for: 1
+            /* notification: 0, */
+        },
+
+
+
+
+
+
+
+
+
+
         {
             label: "Devis",
             iconss: <FaFileInvoiceDollar />,
