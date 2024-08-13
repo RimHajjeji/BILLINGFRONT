@@ -11,13 +11,16 @@ import ModalAlert from '../modal/ModalAlert';
 import DevisPdfTemplate from '../devis/DevisPdfTemplate';
 import { del_Devis } from '../../store/devis/action';
 import { useLocation } from 'react-router-dom'
+
 function CalenderD() {
     const dispatch = useDispatch();
     const location = useLocation();
-    const montonht = useSelector(state => state?.HomeD?.data?.sum?.montantHT)
-    /* const user = useSelector(state => state?.Home?.data?.data) */
+
+    const montonht = useSelector(state => state?.Home?.data?.sum?.montantHT)
+    const user = useSelector(state => state?.Home?.data?.data) 
     const Idcopany = useSelector(state => state?.Show_company_byUser?.data[0]?._id)
-    const devis = useSelector(state => state?.HomeD?.data?.result)
+    const devis = useSelector(state => state?.Home?.data?.result)
+
     const [show, setShow] = useState(false)
     const [show1, setShow1] = useState(false)
     const [deletes, setDeletes] = useState({})
@@ -26,6 +29,10 @@ function CalenderD() {
     const [filtredClient, setFiltredDevis] = React.useState([])
     const [showAddedFacture, setShowAddedFacture] = useState(false)
     const [showModalPdf, setModalPdf] = useState(false)
+    useEffect(()=>{
+        console.log(montonht,devis,deviss,selectedDevis,user,filtredClient,TableValue);
+        
+    },[])
     /* state for  export pdf */
     const [productForExport, setProductForExport] = useState([])
     const [clientForExport, setClientForExport] = useState({})
@@ -82,6 +89,8 @@ function CalenderD() {
         }
     }, [location])
     useEffect(() => {
+        
+        
         if (deviss?.length > 0) {
             setFiltredDevis(devis?.filter((el) => {
                 return (
@@ -90,8 +99,10 @@ function CalenderD() {
                 )
             }))
         }
-        else
-            setFiltredDevis(devis)
+        else{
+            setFiltredDevis(devis)}
+            console.log("here",filtredClient);
+            
     }, [deviss, devis])
     /* const [month, setMonth] = useState(null); */
     /* const [Month, setMonth] = useState([
